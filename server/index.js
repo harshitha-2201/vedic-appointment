@@ -19,7 +19,17 @@ const app = express();
 app.use(express.json());
 
 // cors
-app.use(cors());
+// app.use(cors());
+
+const allowedOrigins = ['https://appointment-booking-frontend-wtqy.onrender.com'];
+
+// Use CORS and specify allowed origin
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
+
+
 
 // Routes
 app.use('/api/auth', authRoutes);
