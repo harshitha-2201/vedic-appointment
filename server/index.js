@@ -19,16 +19,16 @@ const app = express();
 app.use(express.json());
 
 // cors
-// app.use(cors());
+app.use(cors());
 
-const allowedOrigins = ['https://appointment-booking-frontend-wtqy.onrender.com'];
+// const allowedOrigins = ['https://appointment-booking-frontend-wtqy.onrender.com'];
 
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true,
+// }));
 
 
 
