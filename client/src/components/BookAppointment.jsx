@@ -19,7 +19,7 @@ const BookAppointment = () => {
       const token = localStorage.getItem('token'); // Get token from local storage
       console.log(localStorage.getItem('token'));
       const res = await axios.post(
-        'https://appointment-booking-backend-7k26.onrender.com/api/appointments/appointment',
+        'https://appointment-booking-ba.onrender.com/api/appointments/appointment',
         formData,{ 
         headers: {
           'Content-Type': 'application/json',
