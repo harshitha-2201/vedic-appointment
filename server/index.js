@@ -23,11 +23,13 @@ app.use(express.json());
 
 const allowedOrigins = ['https://appointment-booking-frontend-wtqy.onrender.com'];
 
-// Use CORS and specify allowed origin
 app.use(cors({
   origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
 }));
+
 
 
 
