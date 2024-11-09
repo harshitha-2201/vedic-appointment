@@ -12,7 +12,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', { email, password });
+      const response = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/auth/login`, { email, password });
       console.log(response.data);
       setError('');
       

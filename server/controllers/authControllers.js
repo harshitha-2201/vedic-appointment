@@ -8,6 +8,11 @@ exports.registerUser = async (req, res) => {
   try {
     const { name, email, password, phone } = req.body;
 
+    // Check if all fields are provided
+    if (!name || !email || !password || !phone) {
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
     // Check if user exists
     let user = await User.findOne({ email });
     if (user) return res.status(400).json({ message: 'User already exists' });
@@ -33,6 +38,11 @@ exports.registerUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Check if all fields are provided
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
 
     // Check if user exists
     const user = await User.findOne({ email });
