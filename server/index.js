@@ -23,6 +23,18 @@ app.use(cors({
   credentials: true,
 }));
 
+// const allowedOrigins = ['https://appointment-booking-frontend-wtqy.onrender.com'];
+
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   credentials: true,
+// }));
+
+
+
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/appointments', appointmentsRoute);
