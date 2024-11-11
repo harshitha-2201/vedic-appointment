@@ -18,12 +18,8 @@ const BookAppointment = () => {
     try {
       const token = localStorage.getItem('token'); // Get token from local storage
       console.log(localStorage.getItem('token'));
-<<<<<<< HEAD
+
       const res = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/appointments/appointment`,
-=======
-      const res = await axios.post(
-        `${process.env.REACT_APP_LOCALHOST}/api/appointments/appointment`,
->>>>>>> 6b7cb4cb1c5f6747b877b6c3edbb39735f9ea782
         formData,{ 
         headers: {
           'Content-Type': 'application/json',
