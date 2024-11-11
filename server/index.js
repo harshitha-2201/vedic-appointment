@@ -18,20 +18,11 @@ const app = express();
 app.use(express.json());
 
 // CORS
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Set allowed origin in .env if needed
-  credentials: true,
-}));
-
-// const allowedOrigins = ['https://appointment-booking-frontend-wtqy.onrender.com'];
-
 // app.use(cors({
-//   origin: allowedOrigins,
-//   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
+//   origin: process.env.FRONTEND_URL ,
 //   credentials: true,
 // }));
-
+app.use(cors());
 
 
 

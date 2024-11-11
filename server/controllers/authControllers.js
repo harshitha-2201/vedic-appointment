@@ -44,18 +44,28 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ message: 'Email and password are required' });
     }
 
-    // Check if user exists
+    // Check if user is admin and validate admin credentials
+    if (email === 'admin22@email.com' && password === 'Admin@22') {
+      const token = jwt.sign({ userId: 'admin', role: 'admin' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+      return res.status(200).json({ message: 'Admin login successful', token });
+    }
+
+    // Check if it's a regular user login
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: 'Invalid credentials' });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
     // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    // Generate JWT
+    // Generate JWT for user
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(200).json({ message: 'User login successful', token, user });
 
-    res.status(200).json({ token, user });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

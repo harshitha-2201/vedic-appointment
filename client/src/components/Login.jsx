@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
+
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -15,13 +17,22 @@ const Login = () => {
 
       const response = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/auth/login`, { email, password });
       console.log(response.data);
+    
       setError('');
       
-      // Assuming you store the token in localStorage or handle authentication state here
-      localStorage.setItem('token', response.data.token);
-      
-      // Navigate to the booking page after successful login
-      navigate('/book-appointment');
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+  
+      // Decode the token and check the role
+      const decodedToken = jwtDecode(token); // Decode the token
+      const role = decodedToken.role; // Assuming 'role' is in the payload
+  
+      // Navigate based on the user's role
+      if (role === 'admin') {
+        navigate('/list-appointment'); // Admin dashboard route
+      } else {
+        navigate('/book-appointment'); // User dashboard route
+      }
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     }
