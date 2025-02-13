@@ -16,7 +16,7 @@ const BookAppointment = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token'); // Get token from local storage
+      const token = localStorage.getItem('token')?.trim();
       console.log(localStorage.getItem('token'));
 
       const res = await axios.post(`${process.env.REACT_APP_LOCALHOST}/api/appointments/appointment`,

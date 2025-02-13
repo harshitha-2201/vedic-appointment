@@ -15,10 +15,7 @@ const auth = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
-        // Check if the user is an admin
-        if (decoded.role !== 'admin') {
-          return res.status(403).json({ message: 'Access denied: Admin credentials required' });
-        }
+
         
     next();
   } catch (err) {
