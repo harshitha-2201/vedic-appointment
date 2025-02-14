@@ -17,12 +17,13 @@ const app = express();
 // Middleware
 app.use(express.json());
 
-// CORS
-// app.use(cors({
-//   origin: process.env.FRONTEND_URL ,
-//   credentials: true,
-// }));
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+    origin: 'https://vedic-appointment-1.onrender.com/', // Your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
+// app.use(cors());
 
 
 
