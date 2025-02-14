@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors({
-    origin: 'https://vedic-appointment-1.onrender.com/', // Your frontend URL
+    origin: 'https://vedic-appointment-2-dj8f.onrender.com/', // Your frontend URL
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
