@@ -1,6 +1,8 @@
 // Register.js
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -9,6 +11,9 @@ const Register = () => {
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
+
+
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -17,6 +22,8 @@ const Register = () => {
       console.log(response.data);
       setSuccess('Registration successful!');
       setError('');
+      navigate('/login');
+      
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
